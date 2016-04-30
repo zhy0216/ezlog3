@@ -1,0 +1,7 @@
+*.pyc
+.webassets-cache
+dist/
+env/
+local_conf.py
+.coverage
+ctags.tmp
