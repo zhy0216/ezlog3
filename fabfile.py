@@ -8,6 +8,13 @@ from fabric.api import local
 _warn = logging.warn
 CURRENT_PATH = os.path.join(os.getcwd(),os.path.dirname(__file__))
 
+def update():
+    """ update function,
+        update stuff from model/update
+        instal new package ==> check if it is in virtualenv
+    """
+    pass
+
 
 def update_req():
     """Updating requirements for pip"""
