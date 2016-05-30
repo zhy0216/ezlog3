@@ -24,6 +24,13 @@ def update_req():
         return
     local("pip freeze > %s/pip_requirements.txt" % CURRENT_PATH)
 
+def gen_deploy_config():
+    config = {
+
+    }
+    ## run the script from script/
+    pass
+
 def test():
     """Run nose test"""
     local("nosetests --nocapture")

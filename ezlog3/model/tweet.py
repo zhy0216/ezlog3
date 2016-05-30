@@ -17,7 +17,13 @@ class Tweet(db.Document):
     def __ini__(self):
         pass
 
+class ArticleTweet(Tweet):
+    type               = db.StringField(default = "article")
+
 class PictureTweet(Tweet):
     type               = db.StringField(default = "picture")
+
+class VideoTweet(Tweet):
+    type               = db.StringField(default = "video")
 
 
