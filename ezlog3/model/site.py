@@ -1,4 +1,4 @@
-
+from ezlog3.libs.db import db
 
 ''' site model '''
 

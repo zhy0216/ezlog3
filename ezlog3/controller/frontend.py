@@ -11,3 +11,8 @@ def main():
     }
 
     return render_template('main.html',**data)
+
+if app.config["DEBUG_MODE"]:
+    @app.route("/debug/login")
+    def debug_login():
+        pass

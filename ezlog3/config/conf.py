@@ -6,6 +6,8 @@ import datetime as dt
 DEBUG_MODE = True
 
 SITENAME = "EZLOG"#your site here
+SITE_VERSION  = 1.0
+MODEL_VERSION = 1.0
 SITE_DOMAIN = ""#your site here
 SERVER_NAME = None
 PORT = 5000

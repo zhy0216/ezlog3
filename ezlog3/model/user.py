@@ -6,6 +6,7 @@ class User(db.Document):
     username    = db.StringField(required=True)
     nickname    = db.StringField(default="imdefault")
     avatar      = db.StringField(default="static/default_avatar.jpg")
+    bg_img      = db.StringField(default="static/bg.jpg")
     password    = db.StringField(required=True)
     quote       = db.StringField(default="im a quote, say something")
 

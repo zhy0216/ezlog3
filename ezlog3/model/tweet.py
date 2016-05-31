@@ -3,6 +3,7 @@ import string,random
 from flask import g,session,jsonify,render_template
 from ezlog3.libs.db import db
 from datetime import datetime as dt
+from mongoengine import CASCADE
 
 class Tweet(db.Document):
     content            = db.StringField(required=True)
@@ -27,3 +28,6 @@ class VideoTweet(Tweet):
     type               = db.StringField(default="video")
 
 
+class Topic(db.Document):
+    name               = db.StringField()
+    tweet              = db.ReferenceField("Tweet", reverse_delete_rule=CASCADE)
