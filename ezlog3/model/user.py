@@ -18,6 +18,9 @@ class User(db.Document):
         ]
     }
 
+    def get_id(self):
+        return str(self.id)
+
     @classmethod
     def get_user_by_id(cls, id):
         if id is None:
@@ -39,3 +42,7 @@ class User(db.Document):
     @classmethod
     def validate_user(cls, username, password):
         return cls.objects(username=username,password=password).first()
+
+    @property 
+    def is_active(self):
+        return True
