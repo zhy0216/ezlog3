@@ -4,7 +4,9 @@
         <meta charset="utf-8">
         <title>{{config.SITENAME}}</title>
         <meta name="description" content="ezlog3">
-        <link rel="stylesheet" href="static/main.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="static/minimal.css" />
+        <link rel="stylesheet" href="static/main.css" />
     </head>
 
 
@@ -16,12 +18,15 @@
                 <div id="avatar">
                 <img src="{{user.avatar}}" />
                 </div>
-                <h3>@{{user.username}}</h3>
-                <h3><small>{{user.quote}}</small></h3>
+                <h3>@{{user.nickname}}</h3>
+                <h3 id="quote">{{user.quote}}</h3>
+            </div>
+            <div id="content">
 
             </div>
-
         </div>
+
+
 
         <script src="static/main.js"></script>
     </body>

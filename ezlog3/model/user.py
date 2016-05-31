@@ -3,7 +3,8 @@ import string,random
 from ezlog3.libs.db import db
 
 class User(db.Document):
-    username    = db.StringField(required=True, default="imdefault")
+    username    = db.StringField(required=True)
+    nickname    = db.StringField(default="imdefault")
     avatar      = db.StringField(default="static/default_avatar.jpg")
     password    = db.StringField(required=True)
     quote       = db.StringField(default="im a quote, say something")
@@ -24,6 +25,10 @@ class User(db.Document):
     @classmethod
     def get_user_by_username(cls,username):
         return cls.objects(username=username).first()
+
+    @classmethod
+    def get_user_by_nickname(cls,nickname):
+        return cls.objects(nickname=nickname).first()
 
     @classmethod
     def is_valid(cls,username,password):
