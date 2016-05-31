@@ -5,9 +5,9 @@ from ezlog3.libs.db import db
 from datetime import datetime as dt
 
 class Tweet(db.Document):
-    content            = db.StringField(required = True)
-    type               = db.StringField(default = "text")
-    create_date        = db.DateTimeField(default = dt.now)
+    content            = db.StringField(required=True)
+    type               = db.StringField(default="text")
+    create_date        = db.DateTimeField(default=dt.now)
 
     meta = {
         'allow_inheritance': True,
@@ -18,12 +18,12 @@ class Tweet(db.Document):
         pass
 
 class ArticleTweet(Tweet):
-    type               = db.StringField(default = "article")
+    type               = db.StringField(default="article")
 
 class PictureTweet(Tweet):
-    type               = db.StringField(default = "picture")
+    type               = db.StringField(default="picture")
 
 class VideoTweet(Tweet):
-    type               = db.StringField(default = "video")
+    type               = db.StringField(default="video")
 
 

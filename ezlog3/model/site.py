@@ -3,6 +3,7 @@
 ''' site model '''
 
 class Site(db.Document):
+    name                    = db.StringField(required=True)
     site_version            = db.DecimalField(required=True, precision=2)
     model_version           = db.DecimalField(required=True, precision=2)
 
