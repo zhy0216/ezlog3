@@ -22,9 +22,38 @@
                 <h3 id="quote">{{user.quote}}</h3>
             </div>
             <div id="content">
+                <div id="tweet-container">
+                {%for i in range(3)%}
+                    <div class="tweet tweet-text" title="aa">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent euismod porta tempor. Donec pulvinar turpis nec velit pellentesque quis rhoncus sapien facilisis. 
+                    </div>
+                    <div class="tweet tweet-text" title="aadf">
+                        60年前，你们的爷爷奶奶远离家 乡，登上大陈岛垦荒创业，用青春和汗水培育了艰苦创业、奋发图强、无私奉献、开拓创新的垦荒精神。正如你们所说，他们是最可敬的人。 
+                    </div>
 
+                    <div class="tweet tweet-picture" title="">
+                        60年前，你们的爷爷奶奶远离家 乡，登上大陈岛垦荒创业，用青春和汗水培育了艰苦创业、奋发图强、无私奉献、开拓创新的垦荒精神。正如你们所说，他们是最可敬的人。
+                        <div class="tweet-image"><img src="static/sample.jpg" /></div>
+                    </div>
+
+                    <div class="tweet tweet-video" title="">
+                        60年前，你们的爷爷奶奶远离家 乡，登上大陈岛垦荒创业，用青春和汗水培育了艰苦创业、奋发图强、无私奉献、开拓创新的垦荒精神。正如你们所说，他们是最可敬的人。
+                        <video width="100%" controls>
+                          <source src="static/sample.mp4" type="video/mp4">
+                          Your browser does not support HTML5 video.
+                        </video>
+                    </div>
+
+                    <div class="tweet tweet-article" title="">
+                        发展农业现代化没有一定规模是不行的，但这是一个渐进的过程，不能一下子很快完成。要把选择权给农民，不能替代农民去选择。无论是土地承包经营权流转还是农民进城，党和政府可以引导示范，但不能搞强迫命令，不能一阵风、一刀切 
+                        <div class="read-more"></div>
+                    </div>
+
+                {%endfor%}
+                </div><!-- end of tweet-container -->
             </div>
         </div>
+
 
 
 
