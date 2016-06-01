@@ -9,7 +9,8 @@ from ezlog3.model import User
 @app.route("/")
 def main():
     data = {
-        "user": User()
+        "user": User.objects().first(),
+        "cur_user": flask_login.current_user,
     }
 
     return render_template('main.html',**data)

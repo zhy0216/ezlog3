@@ -14,14 +14,22 @@
 
     <body>
         <div id="wrapper">
-            <div id="header">
+            <div id="header" class="{{cur_user and 'editable'}}">
                 <div id="avatar">
                 <img src="{{user.avatar}}" />
                 </div>
-                <h3>@{{user.nickname}}</h3>
+                <h3 id="nickname">@{{user.nickname}}</h3>
                 <h3 id="quote">{{user.quote}}</h3>
             </div>
             <div id="content">
+                {%if cur_user%}
+                <div id="tweet-input">
+                    <div class="small-avatar">
+                        <img src="{{user.avatar}}" />
+                    </div>
+                </div>
+                {%endif%}
+
                 <div id="tweet-container">
                 {%for i in range(3)%}
                     <div class="tweet tweet-text" title="aa">
