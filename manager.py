@@ -1,3 +1,4 @@
+import getpass
 import click
 
 @click.group()
@@ -18,8 +19,25 @@ def initdb():
         user.save()
     click.echo("done!")
 
+@click.command()
+def create_user():
+    from ezlog3.model import User
+    user = User.objects().first()
+    if user is not None:
+        click.echo("we only allow one user!")
+        click.echo("you will change %s to :"%user.nickname)
+        user = User()
+    else:
+        click.echo("Username: ")
+    username = raw_input()
+    password = getpass.getpass("Password: ")
+    user.username = username
+    user.password = password
+    user.save()
+    click.echo("done!")
 
 manager.add_command(initdb)
+manager.add_command(create_user)
 
 if __name__ == '__main__':
     manager()

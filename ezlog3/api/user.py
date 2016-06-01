@@ -9,3 +9,11 @@ def api_main():
     return current_user.nickname
 
 
+@apiapp.route("/user/<userid>/", methods=["POST"])
+@login_required
+def modify_user(userid):
+    if userid != current_user.id:
+        # throw out an exception
+        return "error"
+
+    
