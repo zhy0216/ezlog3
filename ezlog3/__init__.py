@@ -16,3 +16,6 @@ def load_user(user_id):
 
 
 import controller
+from api import apiapp
+
+app.register_blueprint(apiapp, url_prefix='/api')

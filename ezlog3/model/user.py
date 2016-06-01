@@ -43,6 +43,11 @@ class User(db.Document):
     def validate_user(cls, username, password):
         return cls.objects(username=username,password=password).first()
 
+    # some hack for flask-login
     @property 
     def is_active(self):
+        return True
+
+    @property
+    def is_authenticated(self):
         return True
