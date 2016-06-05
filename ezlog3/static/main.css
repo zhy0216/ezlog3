@@ -82,8 +82,26 @@ body{
 
 #tweet-input .small-avatar{
   width: 32px;
+  position: absolute;
 }
 
 #tweet-input .small-avatar img{
   border-radius: 4px;
+}
+
+#teet-textarea{
+    width: 600px;
+    margin-left: 46px;
+    padding-top: 0px;
+    padding: 15px;
+    height: 1.5em;
+    border: none;
+    resize:none;
+    border-left: 2px solid #2196F3;
+    padding-bottom: 7px;
+    padding-top: 11px;
+}
+
+#teet-textarea:focus{
+  height: 5.5em;
 }
