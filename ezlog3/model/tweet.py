@@ -9,6 +9,7 @@ class Tweet(db.Document):
     content            = db.StringField(required=True)
     type               = db.StringField(default="text")
     create_date        = db.DateTimeField(default=dt.now)
+    author             = db.ReferenceField("User", reverse_delete_rule=CASCADE)
 
     meta = {
         'allow_inheritance': True,
@@ -18,15 +19,13 @@ class Tweet(db.Document):
     def __ini__(self):
         pass
 
-class ArticleTweet(Tweet):
-    type               = db.StringField(default="article")
-
-class PictureTweet(Tweet):
-    type               = db.StringField(default="picture")
-
-class VideoTweet(Tweet):
-    type               = db.StringField(default="video")
-
+    def post_process(self):
+        ## parse topic first
+        # content
+        topics = re.findall(r"#(\w+)\W", self.content)
+        for topic_name in self.topics:
+            topic = Topic(name=topic_name, tweet=self)
+            topic.save()
 
 class Topic(db.Document):
     name               = db.StringField()

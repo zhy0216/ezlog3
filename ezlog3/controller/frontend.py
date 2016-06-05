@@ -22,6 +22,7 @@ if app.config["DEBUG_MODE"]:
         return flask.redirect(flask.url_for('main'))
 
     @app.route("/debug/logout")
+    @login_required
     def debug_logout():
         flask_login.logout_user()
         return flask.redirect(flask.url_for('main'))
