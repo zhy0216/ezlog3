@@ -1,5 +1,5 @@
 # -*- coding: utf-8 *-*
-import string,random
+import string, random, re
 from flask import g,session,jsonify,render_template
 from ezlog3.libs.db import db
 from datetime import datetime as dt
@@ -16,16 +16,17 @@ class Tweet(db.Document):
         'index_types': False,
     }
 
-    def __ini__(self):
-        pass
 
     def post_process(self):
         ## parse topic first
         # content
         topics = re.findall(r"#(\w+)\W", self.content)
-        for topic_name in self.topics:
+        for topic_name in topics:
             topic = Topic(name=topic_name, tweet=self)
             topic.save()
+
+    def render(self):
+        return self.content
 
 class Topic(db.Document):
     name               = db.StringField()
