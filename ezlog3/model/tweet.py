@@ -16,6 +16,8 @@ class Tweet(db.Document):
         'index_types': False,
     }
 
+    def get_tweet_by_topic(self, topic):
+        pass
 
     def post_process(self):
         ## parse topic first
@@ -26,7 +28,18 @@ class Tweet(db.Document):
             topic.save()
 
     def render(self):
-        return self.content
+        ## ugly
+        result = ['<div class="tweet">']
+        content = self.content
+        # process topic
+
+        # process linkify
+
+        result.append(content)
+        result.append('</div>')
+        return "".join(result)
+
+
 
 class Topic(db.Document):
     name               = db.StringField()

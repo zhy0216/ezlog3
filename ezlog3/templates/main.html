@@ -32,8 +32,11 @@
                 {%endif%}
 
                 <div id="tweet-container">
-                {%for i in range(3)%}
-                    <div class="tweet tweet-text" title="aa">
+                    {% for tweet in tweets %}
+                        {{tweet.render() | safe}}
+                    {%endfor%}
+
+                    <!-- <div class="tweet tweet-text" title="aa">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent euismod porta tempor. Donec pulvinar turpis nec velit pellentesque quis rhoncus sapien facilisis. 
                     </div>
                     <div class="tweet tweet-text" title="aadf">
@@ -56,9 +59,8 @@
                     <div class="tweet tweet-article" title="">
                         发展农业现代化没有一定规模是不行的，但这是一个渐进的过程，不能一下子很快完成。要把选择权给农民，不能替代农民去选择。无论是土地承包经营权流转还是农民进城，党和政府可以引导示范，但不能搞强迫命令，不能一阵风、一刀切 
                         <div class="read-more"></div>
-                    </div>
+                    </div> -->
 
-                {%endfor%}
                 </div><!-- end of tweet-container -->
             </div>
         </div>
