@@ -1,8 +1,9 @@
 #coding: utf-8
 import string,random
 from ezlog3.libs.db import db
+from flask.ext.login import  UserMixin
 
-class User(db.Document):
+class User(db.Document, UserMixin):
     username    = db.StringField(required=True)
     nickname    = db.StringField(default="imdefault")
     avatar      = db.StringField(default="static/default_avatar.jpg")
@@ -43,11 +44,3 @@ class User(db.Document):
     def validate_user(cls, username, password):
         return cls.objects(username=username,password=password).first()
 
-    # some hack for flask-login
-    @property 
-    def is_active(self):
-        return True
-
-    @property
-    def is_authenticated(self):
-        return True

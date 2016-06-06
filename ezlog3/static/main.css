@@ -71,7 +71,7 @@ body{
 }
 
 #tweet-container{
-  padding-top: 24px;
+  padding-top: 12px;
 }
 
 #tweet-input{
@@ -102,6 +102,6 @@ body{
     padding-top: 11px;
 }
 
-#teet-textarea:focus{
+#tweet-textarea:focus{
   height: 5.5em;
 }

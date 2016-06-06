@@ -14,7 +14,7 @@
 
     <body>
         <div id="wrapper">
-            <div id="header" class="{{cur_user and 'editable'}}">
+            <div id="header">
                 <div id="avatar">
                 <img src="{{user.avatar}}" />
                 </div>
@@ -22,7 +22,7 @@
                 <h3 id="quote">{{user.quote}}</h3>
             </div>
             <div id="content">
-                {%if cur_user%}
+                {%if cur_user.is_authenticated %}
                 <div id="tweet-input">
                     <div class="small-avatar">
                         <img src="{{user.avatar}}" />

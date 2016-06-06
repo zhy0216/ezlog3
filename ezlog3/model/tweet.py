@@ -32,6 +32,13 @@ class Tweet(db.Document):
 
     def render(self):
         ## ugly
+        content = self.content
+
+        # process topic
+
+        content = re.sub(r"#(\w+)\W", r"<a href='/tweet/get_by_topic/?name=\1'>#\1</a>" ,content)
+        # print content
+        # process linkify
         file_extension_dict = {
             ## https://en.wikipedia.org/wiki/Comparison_of_web_browsers#Image_format_support
             "image": ("png", "jpg", "jepg", "gif"),
@@ -51,11 +58,10 @@ class Tweet(db.Document):
         link_render = []
 
         result = ['<div class="tweet">']
-        content = self.content
-        # process topic
-
-        # process linkify
+  
         def mycallback(attrs, new=False):
+            if not new:
+                return attrs
             href = attrs['href']
             for key in file_extension_dict:
                 for extension in file_extension_dict[key]:
