@@ -10,7 +10,7 @@ from ezlog3.model import User, Tweet
 def main():
     data = {
         "user": User.objects().first(),
-        "tweets": Tweet.objects().all(),
+        "tweets": Tweet.objects.order_by('-create_date'),
         "cur_user": flask_login.current_user,
     }
 

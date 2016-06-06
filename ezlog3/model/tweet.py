@@ -1,9 +1,12 @@
 # -*- coding: utf-8 *-*
 import string, random, re
-from flask import g,session,jsonify,render_template
-from ezlog3.libs.db import db
 from datetime import datetime as dt
+
+from flask import g,session,jsonify,render_template
 from mongoengine import CASCADE
+import bleach
+
+from ezlog3.libs.db import db
 
 class Tweet(db.Document):
     content            = db.StringField(required=True)
@@ -29,13 +32,59 @@ class Tweet(db.Document):
 
     def render(self):
         ## ugly
+        file_extension_dict = {
+            ## https://en.wikipedia.org/wiki/Comparison_of_web_browsers#Image_format_support
+            "image": ("png", "jpg", "jepg", "gif"),
+            ## https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats
+            "video": ("webm", "mp4", ),
+            "music": ("mp3", "ogg"), 
+            "website":("youtube.com", "youtu.be"), ## web site link special process
+        }
+
+        link_process = {
+            "image": [],
+            "video": [],
+            "music": [],
+            "website":[],
+        }
+
+        link_render = []
+
         result = ['<div class="tweet">']
         content = self.content
         # process topic
 
         # process linkify
+        def mycallback(attrs, new=False):
+            href = attrs['href']
+            for key in file_extension_dict:
+                for extension in file_extension_dict[key]:
+                    if href.endswith("."+extension):
+                        link_process[key].append((href, extension))
+                        return None
+
+            attrs['_text'] = "link"
+            return attrs
+
+        content = bleach.linkify(content, callbacks=[mycallback])
+
+        ## image 
+        for link_tuple in link_process["image"]:
+            link, extension = link_tuple
+            content = content.replace(link, "")
+            link_render.append('<div class="tweet-image"><img src="%s" /></div>'%link)
+
+        for link_tuple in link_process["video"]:
+            link, extension = link_tuple
+            content = content.replace(link, "")
+            link_render.append(''' <video width="100%%" controls>
+                          <source src="%s" type="video/%s">
+                          Your browser does not support HTML5 video.
+                        </video>'''%(link, extension))
+
 
         result.append(content)
+        result = result + link_render
         result.append('</div>')
         return "".join(result)
 

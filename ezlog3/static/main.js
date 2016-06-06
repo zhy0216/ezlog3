@@ -11,6 +11,10 @@ Zepto(function($){
                     "content": content
                 }, function(data){
                     console.log(data)
+                    if(data.rcode === 200){
+                        $textarea.val("");
+                        $("#tweet-container").prepend(data.tweet)
+                    }
                 })
             }
         }
