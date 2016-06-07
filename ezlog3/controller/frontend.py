@@ -38,11 +38,21 @@ def main():
 
     return render_template('main.html',**data)
 
-@app.route("/config")
+@app.route("/config", methods=["GET", "POST"])
 @flask_login.login_required
 def config():
-    # config page
-    return "1"
+    if request.method == "GET":
+        data = {
+            "cur_user": flask_login.current_user,
+        }
+        return render_template('config.html',**data)
+    else:
+        cur_user = flask_login.current_user
+        for attr in request.form:
+            if request.form[attr]:
+                setattr(cur_user, attr, request.form[attr])
+        cur_user.save()
+        return flask.redirect("/")
 
 @app.route("/login")
 @flask_login.login_required

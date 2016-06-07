@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>{{config.SITENAME}}</title>
+        <meta name="description" content="ezlog3">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="static/minimal.css" />
+        <link rel="stylesheet" href="static/main.css" />
+        <style>
+        .form-control {
+            width: 100%;
+            padding: 6px 12px;
+            background-color: #fff;
+            border: 1px solid #9a9da5;
+            /*border-radius: 4px;*/
+            -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+            box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+            -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+            -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+            transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+        }
+        .form-control, output {
+            line-height: 1.42857143;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .checkbox, .form-control, .radio, input[type=file], output {
+            display: block;
+        }
+        .form-control, output {
+            font-size: 14px;
+            color: #2b3856;
+        }
+        .btn {
+            display: inline-block;
+            margin-bottom: 0;
+            font-weight: 400;
+            text-align: center;
+            vertical-align: middle;
+            touch-action: manipulation;
+            cursor: pointer;
+            border: 1px solid transparent;
+            padding: 6px 12px;
+            font-size: 14px;
+            line-height: 1.42857143;
+            /*border-radius: 4px;*/
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        .btn-default {
+            color: #2b3856;
+            background-color: #fff;
+            border-color: #9a9da5;
+        }
+
+        form{
+            width: 720px;
+            margin: 50px auto;
+        }
+
+        </style>
+    </head>
+    <body>
+        <form method="POST">
+        <div class="form-group">
+            <label>Nickname</label>
+            <input type="text" class="form-control" name="nickname" placeholder="{{cur_user.nickname}}">
+        </div>
+        <div class="form-group">
+            <label>Username</label>
+            <input type="text" class="form-control" name="username" placeholder="{{cur_user.username}}">
+        </div>
+        <div class="form-group">
+            <label>Background</label>
+            <input type="text" class="form-control" name="bg_img" placeholder="{{cur_user.bg_img}}">
+        </div>
+        <div class="form-group">
+            <label>Avatar</label>
+            <input type="text" class="form-control" name="avatar" placeholder="{{cur_user.avatar}}">
+        </div>
+        <div class="form-group">
+            <label>Quote</label>
+            <input type="text" class="form-control" name="quote" placeholder="{{cur_user.quote}}">
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-control" placeholder="******">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+    </body>
+
+</html>
