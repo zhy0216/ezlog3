@@ -4,6 +4,7 @@ import logging
 import datetime as dt
 
 DEBUG_MODE = True
+DEMO = False
 
 SITENAME = "EZLOG"#your site here
 SITE_VERSION  = 1.0

@@ -1,11 +1,13 @@
 
-following [yinwang's idea](http://www.yinwang.org/blog-cn/2016/05/25/my-tweet)
 
-http://www.dropzonejs.com/
 
-generate rst first then generate pdf: https://github.com/rst2pdf/rst2pdf
+A personal tweet system follow [yinwang's idea](http://www.yinwang.org/blog-cn/2016/05/25/my-tweet)
 
-or convert html to pdf: https://github.com/xhtml2pdf/xhtml2pdf/blob/master/test/simple.py
+Live Demo: [http://lazyang.com/](http://lazyang.com/), username: demo, password: demo
 
-readmore btn: http://www.vecteezy.com/vector-art/94210-read-more-icon-pack
+/login: login, using basic http auth
+/config: config website
 
+TODO:
+* add pagination
+* add topic
