@@ -35,8 +35,14 @@ class Tweet(db.Document):
         content = self.content
 
         # process topic
-
         content = re.sub(r"#(\w+)\W", r"<a href='/tweet/get_by_topic/?name=\1'>#\1</a>" ,content)
+
+        # process emoji
+        keywords = re.findall(r":\w+:", content)
+        for keyword in keywords:
+            right_keyword = keyword.replace("_", "-")[1:-1]
+            content = content.replace(keyword, '<i class="twa twa-%s"></i>'%right_keyword)
+
         # print content
         # process linkify
         file_extension_dict = {
